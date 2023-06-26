@@ -1,0 +1,39 @@
+#Topics
+drive_topic: "/audubon/drive" # Autonomous node publishes to mux
+keyboard_topic: "/audubon/key" # Keyboard input
+odom_topic: "/camera/odom/sample"    # odometry
+get_servo_topic: "/sensors/servo_position_command"    # get servo position topic
+set_servo_topic: "/commands/servo/position"    # set servo position topic
+set_rpm_topic: "/commands/motor/speed"    # set rpm topic
+estop_topic: "/audubon/estop"
+control_mode_topic: "/audubon/motor/mode"
+max_motor_RPM: "/audubon/motor/max_RPM"
+vesc_power_topic: "/sensors/core"
+vesc_accum_current_topic: "/sensors/accum_current"
+
+loop_rate: 10
+
+# car 
+car_gear_ratio: 43 # 43 -  39.408 - changed from 23.66
+car_wheel_radius: 0.0507 # changed from 0.052
+tire_circumference: 0.3194 # changed from 0.32656 - changed from 0.34558
+max_servo_pos_in_radians: 0.46 # 0.392 -  0.7853981634 -  pi/4 guess, needs to be measured
+wheelbase: 0.34 # Measured manually on newer traxxas
+steering_offset: 0.0
+current_calibration_factor: 2
+
+#PID gains for steering
+kp_steer: 0.0
+ki_steer: 0.0
+kd_steer: 0.0
+
+#PID gains for speed
+kp_speed: 3.0
+ki_speed: 0.068
+kd_speed: 0.8
+
+
+#Good gains
+#kp_speed: 4.5
+#ki_speed: 0.068
+#kd_speed: 0.2

@@ -1,0 +1,45 @@
+#Topics
+drive_topic: "/audubon/drive" # Autonomous node publishes to mux
+drive_controlled_topic: "/audubon/drive/controlled"
+keyboard_topic: "/audubon/key" # Keyboard input
+odom_topic: "/camera/odom/sample"    # odometry
+get_servo_topic: "/sensors/servo_position_command"    # get servo position topic
+set_servo_topic: "/commands/servo/position"    # set servo position topic
+set_rpm_topic: "/commands/motor/speed"    # set rpm topic
+estop_topic: "/audubon/estop"
+motor_control_mode: "rpm" # or "duty_cycle" or "rpm"
+set_duty_cycle_topic: "/commands/motor/duty_cycle"    # set duty cycle topic
+vesc_power_topic: "/sensors/core"
+vesc_accum_current_topic: "/sensors/accum_current"
+
+loop_rate: 10
+
+# car 
+car_gear_ratio: 26 # 23.6686390533 - changed from 23.66
+car_wheel_radius: 0.052 # changed from 0.055
+tire_circumference: 0.32656 # changed from 0.34558
+max_servo_pos_in_radians: 0.44 # 0.7853981634 pi/4 guess, needs to be measured
+wheelbase: 0.34 # Measured manually on newer traxxas
+steering_offset: 0.0
+max_wheel_RPM: 20000 # 10930 - changed from 5465
+current_calibration_factor: 2
+
+# Check for Vesc Odom
+speed_to_erpm_gain: 0.1
+speed_to_erpm_offset: 1
+steering_angle_to_servo_gain: 1
+steering_angle_to_servo_offset: 0
+
+#PID gains for steering
+kp_steer: 0.6
+ki_steer: 0.001
+kd_steer: 0.05
+
+#PID gains for speed
+kp_speed: 5.0
+ki_speed: 0.2
+kd_speed: 0.065
+
+
+
+

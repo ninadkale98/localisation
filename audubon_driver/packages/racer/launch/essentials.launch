@@ -1,0 +1,36 @@
+<?xml version = '1.0'?>
+
+<launch>
+
+  <arg name="racecar_version" default="jet2" />
+
+  <!-- Camera for odometry and localization -->
+  <!-- <arg name="run_camera" default="false"/> -->
+  <include file="$(find realsense2_camera)/launch/rs_t265.launch" />
+  <!-- <include file="$(find zed_wrapper)/launch/zedm.launch" /> -->
+
+  <!-- VESC node for RPM and steering angle -->
+  <include file="$(find vesc_driver)/launch/vesc_driver_node.launch">
+    <arg name="port" value="/dev/ttyVESC" />
+  </include>
+  <include file="$(find vesc_ackermann)/launch/vesc_to_odom_node.launch" /> 
+      
+  <!-- need accpet drive and then publish to wheels -->
+  <rosparam command="load" file="$(find racer)/configs/$(arg racecar_version).yaml"/>
+  <node pkg="racer" name="Powertrain" type="powertrain_controller.py" output="screen"/>
+
+  <!-- Lidar node for HOKUYU -->
+  <node name="urg_node" pkg="urg_node" type="urg_node" output="screen">
+    <param name="ip_address" value="192.168.0.10"/>
+  </node>
+
+  <!-- Teensy node with ROS Serial -->
+  <!-- <node pkg="rosserial_python" name="teensy_node" type="serial_node.py" args="/dev/ttyTeensy" output="screen"/> -->
+
+  <include file="$(find witmotion_ros)/launch/witmotion.launch" />
+	  <!--  <include file="$(find robot_pose_ekf)/robot_pose_ekf.launch" /> -->
+
+  <node pkg="tf" type="static_transform_publisher" name="map_to_world_static_tf" args="0 0 0 0 0 0 map world 10" />
+  <node pkg="tf" type="static_transform_publisher" name="imu_to_car_static_tf" args="0 0 0 0 0 0 imu camera_link 10" />
+</launch>
+  

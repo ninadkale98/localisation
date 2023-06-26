@@ -1,0 +1,11 @@
+<?xml version='1.0'?>
+
+<launch>
+
+    <arg name="stack" default="racer">
+
+    <group if="$(eval stack == 'racer')">
+        <include file="$(find racer)/launch/essentials.launch"/>
+    </group>
+
+</launch>

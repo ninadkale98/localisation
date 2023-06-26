@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>audubon_driver</name>
+  <version>0.0.0</version>
+  <description>The audubon_driver package</description>
+  <maintainer email="DRONES_Lab@todo.todo">DRONES_Lab</maintainer>
+  <license>TODO</license>
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <!-- Use this template to add new packages -->
+  <!-- <exec_depend><package_name></exec_depend> -->
+
+  <exec_depend>vesc</exec_depend>
+  <exec_depend>racer</exec_depend>
+
+  <export>
+    <metapackage/>
+  </export>
+</package>
